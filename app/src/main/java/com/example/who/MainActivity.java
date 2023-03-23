@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.navigation_home : temp = new HomeFragment();
-
                         break;
                     case R.id.carte : temp = new CarteFragment();
                         break;
