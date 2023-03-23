@@ -51,10 +51,12 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             @Override
             public void onClick(View view) {
                 String url = mValues.get(pos).url;
-                Context context = view.getContext();
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                context.startActivity(i);
+                if ( url != null){
+                    Context context = view.getContext();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    context.startActivity(i);
+                }
 //
 //                else {
 //                    switch (mValues.get(pos).content){
