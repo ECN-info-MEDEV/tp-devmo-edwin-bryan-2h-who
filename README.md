@@ -9,7 +9,8 @@ En effet, les étudiants consultent quotidiennement leur planning, nous voulions
 ## Description de l'application
 Nous commençons par nous connecter avec nos identifiants de Centrale. (Nous n'avons pas implémenter la connexion, nous utilisons admin/admin).
 Après la connexion, les identifiants sont enregistrés dans le téléphone pour pouvoir se connecter directement lors des prochaines ouvertures de l'application.  
-Nous arrivons sur le planning, pour avoir une consultation rapide.  
+Nous arrivons sur le planning, pour avoir une consultation rapide. 
+Nous avons implémenter 2 cours dans le planning au jeudi 23/03 pour visualiser ce que cela pourrait donner. 
 Ensuite nous avons choisi d'avoir accès à la carte du campus car c'est une fonctionnalité qui n'a pas besoin de connexion.
 Mais en réalité, avoir accès à sa boîte mail est plus intéressant.  
 Nous avons un menu qui nous permet d'accéder aux autres services (SVP, Intranet, ...). 
