@@ -2,28 +2,26 @@ package com.example.who.ui.home;
 
 import static com.example.who.ui.planning.CalendarUtils.selectedDate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.who.R;
-import com.example.who.databinding.FragmentHomeBinding;
 import com.example.who.ui.planning.CalendarUtils;
 import com.example.who.ui.planning.Event;
 import com.example.who.ui.planning.HourAdapter;
 import com.example.who.ui.planning.HourEvent;
-import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
@@ -31,32 +29,14 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
     private TextView monthDayText;
     private TextView dayOfWeekTV;
     private ListView hourListView;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        HomeViewModel homeViewModel =
-//                new ViewModelProvider(this).get(HomeViewModel.class);
-
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-//        final TextView monthView = binding.monthDayText;
-//        final TextView dayView = binding.dayOfWeekTV;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-//        Button button = (Button) view.findViewById(R.id.nextDay);
-//        button.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                selectedDate = selectedDate.minusDays(1);
-//                setDayView();
-//            }
-//        });
-        return view;
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
@@ -65,14 +45,34 @@ public class HomeFragment extends Fragment {
         dayOfWeekTV = (TextView) getView().findViewById(R.id.dayOfWeekTV);
         hourListView  = (ListView) getView().findViewById(R.id.hourView);
         // or  (ImageView) view.findViewById(R.id.foo);
+
+        CalendarUtils.selectedDate = LocalDate.now();
+
+        // Manage onClick buttons in a fragment
+        setOnClickButton(view);
+
         setDayView();
+    }
+
+    private void setOnClickButton(View view){
+        Button button = (Button) view.findViewById(R.id.nextDay);
+        Button button2 = (Button) view.findViewById(R.id.previousDay);
+        button.setOnClickListener(this::nextDayAction);
+        button2.setOnClickListener(this::previousDayAction);
+    }
+
+    private void setCourses(){
+        LocalTime time = LocalTime.now();
+        Event newEvent = new Event("DEVMO", CalendarUtils.selectedDate, time);
+        Event.eventsList.add(newEvent);
     }
 
     private void setDayView()
     {
-//        monthDayText.setText(CalendarUtils.monthDayFromDate(selectedDate));
-//        String dayOfWeek = selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
-//        dayOfWeekTV.setText(dayOfWeek);
+        monthDayText.setText(CalendarUtils.monthDayFromDate(selectedDate));
+        String dayOfWeek = selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
+        dayOfWeekTV.setText(dayOfWeek);
+//        setCourses();
         setHourAdapter();
     }
 
@@ -86,7 +86,9 @@ public class HomeFragment extends Fragment {
     {
         ArrayList<HourEvent> list = new ArrayList<>();
 
-        for(int hour = 0; hour < 24; hour++)
+        // Fills the HourEvent List
+        // For every hour we have an EventList that is also filled
+        for(int hour = 8; hour < 21; hour++)
         {
             LocalTime time = LocalTime.of(hour, 0);
             ArrayList<Event> events = Event.eventsForDateAndTime(selectedDate, time);
@@ -94,6 +96,10 @@ public class HomeFragment extends Fragment {
             list.add(hourEvent);
         }
 
+        //  time | events(Event List)
+        //  8:00 | Event1 Event2  ...
+        //  9:00 | Event1 ...
+        //  ...
         return list;
     }
 
@@ -112,6 +118,5 @@ public class HomeFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
     }
 }

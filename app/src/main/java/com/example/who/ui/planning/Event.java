@@ -21,13 +21,15 @@ public class Event
         return events;
     }
 
+    // Fills the EventList for a specific day and hour
     public static ArrayList<Event> eventsForDateAndTime(LocalDate date, LocalTime time)
     {
         ArrayList<Event> events = new ArrayList<>();
 
+        // We go through the elements in the list of events
         for(Event event : eventsList)
         {
-            int eventHour = event.time.getHour();
+            int eventHour = event.getTime().getHour();
             int cellHour = time.getHour();
             if(event.getDate().equals(date) && eventHour == cellHour)
                 events.add(event);
@@ -37,7 +39,9 @@ public class Event
     }
 
 
+    private int uid;
     private String name;
+    private String location;
     private LocalDate date;
     private LocalTime time;
 
@@ -76,5 +80,21 @@ public class Event
     public void setTime(LocalTime time)
     {
         this.time = time;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

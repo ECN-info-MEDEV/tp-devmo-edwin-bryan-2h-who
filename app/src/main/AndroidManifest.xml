@@ -12,10 +12,6 @@
         android:theme="@style/Theme.Who"
         tools:targetApi="31">
         <activity
-            android:name=".ui.planning.DailyCalendarActivity"
-            android:exported="false"
-            android:label="@string/title_daily_calendar_activity" />
-        <activity
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main" />

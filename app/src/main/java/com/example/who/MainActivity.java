@@ -1,9 +1,7 @@
 package com.example.who;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.who.ui.planning.DailyCalendarActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,10 +32,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-//        Intent intent = new Intent(this, DailyCalendarActivity.class);
-//        startActivity(intent);
-
     }
 
 
