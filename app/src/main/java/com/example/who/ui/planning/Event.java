@@ -21,7 +21,9 @@ public class Event
         return events;
     }
 
-    // Fills the EventList for a specific day and hour
+    // Fills the 'events' array
+    // The method search the elements in eventsList that match with
+    // a specific date and hour
     public static ArrayList<Event> eventsForDateAndTime(LocalDate date, LocalTime time)
     {
         ArrayList<Event> events = new ArrayList<>();
