@@ -62,9 +62,14 @@ public class HomeFragment extends Fragment {
     }
 
     private void setCourses(){
-        LocalTime time = LocalTime.now();
-        Event newEvent = new Event("DEVMO", CalendarUtils.selectedDate, time);
-        Event.eventsList.add(newEvent);
+        Event.eventsList.clear();
+        LocalTime time = LocalTime.parse("10:00:00");
+//        LocalDate date = LocalDate.parse("2023-03-24");
+        LocalDate date = LocalDate.now();
+        Event event1 = new Event("TD-DEVMO", date, time);
+        Event event2 = new Event("DS-DEVMO", date, LocalTime.parse("11:00:00"));
+        Event.eventsList.add(event1);
+        Event.eventsList.add(event2);
     }
 
     private void setDayView()
@@ -72,7 +77,7 @@ public class HomeFragment extends Fragment {
         monthDayText.setText(CalendarUtils.monthDayFromDate(selectedDate));
         String dayOfWeek = selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault());
         dayOfWeekTV.setText(dayOfWeek);
-//        setCourses();
+        setCourses();
         setHourAdapter();
     }
 
@@ -86,7 +91,7 @@ public class HomeFragment extends Fragment {
     {
         ArrayList<HourEvent> list = new ArrayList<>();
 
-        // Fills the HourEvent List
+        // Fills the hourEventList
         // For every hour we have an EventList that is also filled
         for(int hour = 8; hour < 21; hour++)
         {

@@ -6,7 +6,7 @@ import android.view.MenuItem;
 
 import com.example.who.databinding.ActivityMainBinding;
 import com.example.who.ui.dashboard.DashboardFragment;
-import com.example.who.ui.navbar.CalendrierFragment;
+import com.example.who.ui.home.HomeFragment;
 import com.example.who.ui.navbar.MenuFragment;
 import com.example.who.ui.carte.CarteFragment;
 
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.calendrier, R.id.carte, R.id.menu)
+                R.id.navigation_home, R.id.carte, R.id.menu)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment temp = null;
                 switch (item.getItemId())
                 {
-                    case R.id.calendrier : temp = new CalendrierFragment();
+                    case R.id.navigation_home : temp = new HomeFragment();
                         break;
                     case R.id.carte : temp = new CarteFragment();
                         break;

@@ -22,4 +22,9 @@
         android:name="com.example.who.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/carteFragment"
+        android:name="com.example.who.ui.carte.CarteFragment"
+        android:label="fragment_carte"
+        tools:layout="@layout/fragment_carte" />
 </navigation>
