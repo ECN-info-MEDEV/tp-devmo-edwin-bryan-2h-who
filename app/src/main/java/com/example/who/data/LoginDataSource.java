@@ -14,14 +14,11 @@ public class LoginDataSource {
     public Result<LoggedInUser> login(String username, String password) {
 
         try {
-            Log.d("login","in try");
             if (username.equals("admin") && password.equals("admin")){
-                Log.d("login","before creating admin");
                 LoggedInUser admin =
                         new LoggedInUser(
                                 java.util.UUID.randomUUID().toString(),
                                 "Admin");
-                Log.d("login","after creating admin");
                 return new Result.Success<>(admin);
             } else {
                 return new Result.Error(new Exception("Failed to log in"));

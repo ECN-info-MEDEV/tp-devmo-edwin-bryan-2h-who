@@ -1,6 +1,7 @@
 package com.example.who;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.who.databinding.ActivityMainBinding;
@@ -10,6 +11,7 @@ import com.example.who.ui.navbar.MenuFragment;
 import com.example.who.ui.carte.CarteFragment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -18,6 +20,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationBarView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getSupportActionBar().setHomeButtonEnabled(false);      // Disable the button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false); // Remove the left caret
+        getSupportActionBar().setDisplayShowHomeEnabled(false); // Remove the ico
 
         NavigationBarView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -59,5 +65,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(false);      // Disable the button
+            actionBar.setDisplayHomeAsUpEnabled(false); // Remove the left caret
+            actionBar.setDisplayShowHomeEnabled(false); // Remove the icon
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
 }

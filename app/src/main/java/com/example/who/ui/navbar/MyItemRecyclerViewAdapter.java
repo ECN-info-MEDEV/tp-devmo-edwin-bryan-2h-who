@@ -50,12 +50,18 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mValues.get(pos).url != null){
-                    Context context = view.getContext();
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(mValues.get(pos).url));
-                    context.startActivity(i);
-                }
+                String url = mValues.get(pos).url;
+                Context context = view.getContext();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                context.startActivity(i);
+//
+//                else {
+//                    switch (mValues.get(pos).content){
+//                        case "OnBoard" :
+//
+//                    }
+//                }
             }
         });
 
