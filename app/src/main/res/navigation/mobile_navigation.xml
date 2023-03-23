@@ -12,14 +12,13 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.who.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
+        android:id="@+id/carteFragment"
+        android:name="com.example.who.ui.carte.CarteFragment"
+        android:label="fragment_carte"
+        tools:layout="@layout/fragment_carte" />
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.who.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/menuFragment"
+        android:name="com.example.who.ui.navbar.MenuFragment"
+        android:label="fragment_menu_list"
+        tools:layout="@layout/fragment_menu_list" />
 </navigation>

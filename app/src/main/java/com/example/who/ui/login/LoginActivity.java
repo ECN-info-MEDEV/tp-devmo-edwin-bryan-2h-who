@@ -127,7 +127,6 @@ public class LoginActivity extends AppCompatActivity {
                 Ed.putString("username",usernameEditText.getText().toString() );
                 Ed.putString("password",passwordEditText.getText().toString());
                 Ed.commit();
-                Log.d("login","shared preference");
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
@@ -151,7 +150,6 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sp1=this.getSharedPreferences("Login", MODE_PRIVATE);
         String user = sp1.getString("username", null);
         String pass = sp1.getString("password", null);
-        Log.d("login", user + pass);
         loginViewModel.login(user,pass);
     }
 }

@@ -5,8 +5,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.who.databinding.ActivityMainBinding;
-import com.example.who.ui.dashboard.DashboardFragment;
-import com.example.who.ui.navbar.CalendrierFragment;
+import com.example.who.ui.home.HomeFragment;
 import com.example.who.ui.navbar.MenuFragment;
 import com.example.who.ui.carte.CarteFragment;
 
@@ -19,6 +18,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.who.ui.planning.HourEvent;
 import com.google.android.material.navigation.NavigationBarView;
 
 
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 Fragment temp = null;
                 switch (item.getItemId())
                 {
-                    case R.id.calendrier : temp = new CalendrierFragment();
+                    case R.id.calendrier : temp = new HomeFragment();
                         break;
                     case R.id.carte : temp = new CarteFragment();
                         break;
