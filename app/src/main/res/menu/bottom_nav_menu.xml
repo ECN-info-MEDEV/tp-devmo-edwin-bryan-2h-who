@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/carte"
-        android:icon="@drawable/carte"
+        android:icon="@drawable/carte_icon"
         android:title="Carte" />
 
     <item

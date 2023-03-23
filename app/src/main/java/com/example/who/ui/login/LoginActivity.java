@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -120,10 +122,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
+                SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
+                SharedPreferences.Editor Ed=sp.edit();
+                Ed.putString("username",usernameEditText.getText().toString() );
+                Ed.putString("password",passwordEditText.getText().toString());
+                Ed.commit();
+                Log.d("login","shared preference");
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
         });
+        checkConnected();
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
@@ -131,9 +140,18 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        this.finish();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    private void checkConnected(){
+        SharedPreferences sp1=this.getSharedPreferences("Login", MODE_PRIVATE);
+        String user = sp1.getString("username", null);
+        String pass = sp1.getString("password", null);
+        Log.d("login", user + pass);
+        loginViewModel.login(user,pass);
     }
 }
